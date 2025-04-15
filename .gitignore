@@ -172,3 +172,6 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+INTRO_TO-VECTOR_DBS/data
+*test*

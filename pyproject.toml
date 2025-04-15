@@ -1,0 +1,17 @@
+[project]
+name = "langchain-study2"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "black>=25.1.0",
+    "langchain>=0.3.23",
+    "langchain-chroma>=0.2.2",
+    "langchain-community>=0.3.21",
+    "langchain-groq>=0.3.2",
+    "langchain-ollama>=0.3.1",
+    "langchainhub>=0.1.21",
+    "ollama>=0.4.7",
+    "python-dotenv>=1.1.0",
+]
