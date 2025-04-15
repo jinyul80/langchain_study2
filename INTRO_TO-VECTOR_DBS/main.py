@@ -8,7 +8,6 @@ from langchain.chains.retrieval import create_retrieval_chain
 from langchain_ollama import OllamaEmbeddings
 from langchain_chroma import Chroma
 from langchain import hub
-from ollama import embeddings
 
 load_dotenv()
 
