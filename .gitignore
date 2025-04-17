@@ -174,4 +174,6 @@ cython_debug/
 .pypirc
 
 INTRO_TO-VECTOR_DBS/data
+document_helper/vector_db
+document_helper/langchain-docs
 *test*
