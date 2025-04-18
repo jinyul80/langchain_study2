@@ -11,6 +11,15 @@
       "program": "${file}",
       "console": "integratedTerminal",
       "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Streamlit Runner",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "streamlit",
+      "args": ["run", "document_helper/main.py"],
+      "justMyCode": true,
+      "cwd": "${workspaceFolder}"
     }
   ]
 }

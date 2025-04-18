@@ -36,8 +36,13 @@ def run_llm(query: str):
     )
 
     result = retrival_chain.invoke(input={"input": query})
+    new_result = {
+        "query": result["input"],
+        "result": result["answer"],
+        "source_documents": result["context"],
+    }
 
-    return result
+    return new_result
 
 
 if __name__ == "__main__":
@@ -52,4 +57,4 @@ if __name__ == "__main__":
     result = run_llm(query)
 
     print("\nAnswer: ")
-    print(result["answer"])
+    print(result["result"])
