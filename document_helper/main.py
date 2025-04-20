@@ -8,11 +8,14 @@ st.header("Langchain Chatbot - Documentation Helper Bot")
 prompt = st.text_input("Prompt", placeholder="Enter your question here...")
 
 # 세션 상태 초기화
-if "user_prompt_history" not in st.session_state:
+if (
+    "user_prompt_history" not in st.session_state
+    and "chat_answers_history" not in st.session_state
+    and "chat_history" not in st.session_state
+):
     st.session_state["user_prompt_history"] = []
-
-if "chat_answers_history" not in st.session_state:
     st.session_state["chat_answers_history"] = []
+    st.session_state["chat_history"] = []
 
 
 def create_sources_string(source_urls: set[str]):
@@ -40,7 +43,10 @@ def create_sources_string(source_urls: set[str]):
 if prompt:
     with st.spinner("Generating response..."):
         query = f"{prompt} \n모든 대답은 한글로 대답해주세요."
-        generated_response = run_llm(query=query)
+        generated_response = run_llm(
+            query=query, chat_history=st.session_state["chat_history"]
+        )
+
         sources = set(
             [
                 doc.metadata.get("source")
@@ -54,6 +60,11 @@ if prompt:
 
         st.session_state["user_prompt_history"].append(prompt)
         st.session_state["chat_answers_history"].append(formatted_response)
+        st.session_state["chat_history"].append(("human", prompt))
+        st.session_state["chat_history"].append(
+            ("ai", generated_response.get("result"))
+        )
+
 
 if st.session_state["chat_answers_history"]:
     for generated_response, user_query in zip(
